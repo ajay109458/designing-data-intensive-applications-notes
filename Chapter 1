@@ -1,4 +1,6 @@
 
+## Basics
+
 Many application today are `data-intensive` instead of `compute-intensive`. CPU power is rarely a limiting factor.
 
 Data-Intensive application built from standard building block
@@ -7,5 +9,17 @@ Data-Intensive application built from standard building block
 - Allow user to search data by keyword ( `search index` )
 - Send a message to another application, to be handle async ( `stream processing` )
 - Periodically crunch large amount of data ( `batch processing` )
+
+## Definitions
+
+#### Reliability
+The system should continue to work correctly (at desired level of performance ) even in face of adversity 
+(Hardware failure, software failure or even human failure )
+
+#### Scalability
+As the system grows ( in terms of traffic volume, data volume or complexity), there should be reasonable ways to deal with that growth.
+
+#### Maintainability
+Over time, many different people will work on a system, they should be able to work productively. 
 
 
