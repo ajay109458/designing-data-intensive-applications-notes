@@ -22,4 +22,13 @@ As the system grows ( in terms of traffic volume, data volume or complexity), th
 #### Maintainability
 Over time, many different people will work on a system, they should be able to work productively. 
 
+## Reliability
+
+#### Reliability meaning
+- The application should work as user expected
+- It can tolerate user making mistakes and using software in unexpected ways. 
+- Its performance should be good in required use case, under expected load and data volume. 
+
+If all above things means `working correctly` then `reliablity` is `continue to work correctly even things go wrong.`.
+
 
