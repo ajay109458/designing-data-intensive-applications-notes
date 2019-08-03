@@ -45,7 +45,7 @@ faults from causing failure.
 
 Netflix `chaos Monkey` deliberately induce the faults in the system by randomly killing individual process to ensure fault-tolerant system.
 
-### Hardware faults
+#### Hardware faults
 
 Few hardware failures 
 - Hard disk crashed
