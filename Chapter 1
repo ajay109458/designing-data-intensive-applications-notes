@@ -1,1 +1,11 @@
 
+Many application today are `data-intensive` instead of `compute-intensive`. CPU power is rarely a limiting factor.
+
+Data-Intensive application built from standard building block
+- Store data so that same or another application can use it later ( `database` )
+- Remember the expensive operations, to speed up read ( `cache` )
+- Allow user to search data by keyword ( `search index` )
+- Send a message to another application, to be handle async ( `stream processing` )
+- Periodically crunch large amount of data ( `batch processing` )
+
+
