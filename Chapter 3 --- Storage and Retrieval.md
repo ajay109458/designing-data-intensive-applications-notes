@@ -1,3 +1,12 @@
+## Database
+
+Following are the purpose of the database
+- Store data into database
+- Retrieve data from the database. 
+
+Storage Engines  
+- Log structured storage engine
+- Page oriented storage engine
 
 ## Logs and hash maps
 
