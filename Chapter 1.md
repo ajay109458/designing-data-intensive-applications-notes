@@ -103,3 +103,45 @@ Scalability is ability of the system to cope up with increased load.
 
 Load can be described with a few numbers which we call as `load parameters` 
 
+#### Tweeter example
+
+**Post Tweet**
+A user can publish a new message to their followers ( Average -  `4.6k requests/sec` , At Peak - `12k requests/sec` )
+
+**Home Timeline**   
+A user can view the tweets posted by the people they follow ( `300k requests/sec` )
+
+Handling 12K write requests per second is easy. Twitter's scaling challenge is not primarily due to tweet volume but due to `fan-out` - each user can follow many people and each user is followed by many people. 
+
+There are following ways to deal with this operation    
+1. Posting a tweet simply insert a new tweet into global table of tweets. When a user requests their home timeline, look up all the people they follow find all the tweets for each of the user. Merge them and sort by time. 
+
+```
+SELECT tweets.*, users.* FROM tweets
+  JOIN users ON tweets.sender_Id = users.Id
+  JOIN follows ON follows.followee_Id = users.Id
+  WHERE follows.follower_id = current_user
+```
+2. Maintain a cache for each user timeline. When a user post a tweet, lookup all the user who follow that user and insert the new tweet into the user timeline record. 
+
+Earlier twitter used approch #1 but later shifted to the approch #2 becacuse magnitude of reading timeline record is much higher then the posting tweet.     
+
+Now, disadvantage with approch #2 is that posting a tweet will do a lot of extra work. On average tweet is delivered to about 75 followers. So `4.6K tweets` now will result into `345k` write operation to the hometimeline cache.
+
+We took avg but some user might have over 30 millions of the follower. It means single tweet from such a user will result into the `30 millions` writes to home timeline. Tweeter tries to deliver a tweet within 5 second and doing this for `30 millions` write is a significant challenge. 
+
+So, now twitter used mixed approch - Approch #2 for all users and Approch #1 for celebrity.
+
+### Maintainability
+
+Maintainance of a software includes 
+- Fixing bugs
+- Keeping system operational
+- Investigating failures
+- Adapting to new platforms
+- Modifying it for new use cases
+
+We should consider following aspects while designing 
+- Operability - Easy for opeartion team to keep system running.
+- Simplicity - Making it easy for new engineers to understand the system, by removing as much complexity as possible from the system.
+- Evolvability - Make it easy for engineers to make changes to the system in the future, adapting for unanticipated use cases as requirements change.It is also known as extensibility. 
