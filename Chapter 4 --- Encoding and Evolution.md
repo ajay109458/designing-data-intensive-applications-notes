@@ -4,9 +4,12 @@
 
 ## Introduction to data serialization
 * Applications evolve over time.
-* When the application is server-side, you perform a **rolling upgrade**, taking down a few nodes in your deployment at a time for upgrades.
-* When the application is client-side, updating is at the mercy of the user.
-* To make this easier, on the data layer, you may have either or both of **backwards compatibility** and **forwards compatibility**. The latter is far trickier.
+* When the application is server-side, you perform a **rolling upgrade**, first few nodes are being upgraded to new version and if eveything is smooth then remaining nodes will be upgraded.
+* When the application is client-side, it depends on the will of the customer when he wants to upgrade the application.    
+
+So, we need to maintain compatibility in both the direction 
+* Backward Compatibility - New code can read the data written by old code.
+* Forward Compatibility - Older code can understand code written by new code. 
 
 
 * In memory we consider data in terms of the data structures they live in.
