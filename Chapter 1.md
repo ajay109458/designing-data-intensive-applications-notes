@@ -78,5 +78,28 @@ There is no quick solution to these types of problem but can take prevention ste
 - Allow individual process to creash and restart
 - Measuring, monitoring and analysing system behavior in the production. 
 
+#### Human Errors
 
+Human -> Build and Operate software. Even if they have best intension human are known as unreliable. 
+
+A study pointed out that configuration by operator leads most of outages. 
+
+Steps to design reliable system in spite of unreliable human
+- Design system in a way that minimizes the opportunities for the error. E.g.
+  - Well-designed abstraction
+  - API 
+  - Make it easy to do right thing and discourge wrong things. 
+- Test throughly 
+  - Unit tests
+  - Whole system integration tests
+  - Manual testing
+- Allow quick and easy recovery from the human errors 
+  - Like rollback
+- Setup detailed and clear monitoring such as performance metrics error rates.
+
+
+### Scalability
+Scalability is ability of the system to cope up with increased load.
+
+Load can be described with a few numbers which we call as `load parameters` 
 
